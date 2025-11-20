@@ -22,3 +22,5 @@ jobs:
         uses: promptfoo/code-scan-action@v0
         with:
           min-severity: medium
+          guidance: |
+            - Always comment on a block of code—never just a single line. And always make sure the start line comes before the end line.
