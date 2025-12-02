@@ -1,11 +1,12 @@
+// Load environment variables FIRST before any other imports
 import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { Request, Response } from 'express';
 import { chatHandler } from './routes/chat';
 import { tokenHandler, jwksHandler } from './routes/oauth';
 import { generateRSAKeyPair } from './utils/jwt-keys';
 import { authenticateToken } from './middleware/auth';
-
-dotenv.config();
 
 // Initialize OAuth key pair on startup
 generateRSAKeyPair();

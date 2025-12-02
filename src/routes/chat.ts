@@ -1,8 +1,12 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { getSystemPrompt } from '../domains';
+import { getAllowedModels, isModelAllowed } from '../utils/litellm-config';
 
 const LITELLM_SERVER_URL = process.env.LITELLM_SERVER_URL || 'http://localhost:4000';
+
+// Get allowed models from LiteLLM config
+const allowedModels = getAllowedModels();
 
 // Map fish names to internal security levels
 const FISH_TO_LEVEL: Record<string, 'insecure' | 'secure'> = {
@@ -17,7 +21,19 @@ const levelPathSchema = z.object({
 
 // Zod schema for query parameters
 const chatQuerySchema = z.object({
-  model: z.string().optional(),
+  model: z.string().optional().refine(
+    (val) => {
+      // If no model specified, allow it (LiteLLM will use default)
+      if (!val) return true;
+      // If no allowed models configured, allow any model (fail open)
+      if (allowedModels.length === 0) return true;
+      // Otherwise, check if model is in allowed list
+      return isModelAllowed(val);
+    },
+    {
+      message: `Model must be one of the allowed models: ${allowedModels.join(', ')}`,
+    }
+  ),
   domain: z.enum(['general', 'finance', 'medicine', 'vacation-rental', 'taxes']).default('general'),
 }).strict();
 
@@ -114,15 +130,11 @@ export async function chatHandler(req: Request, res: Response): Promise<void> {
       ...userMessages
     ];
 
-    // Prepare LiteLLM request
+    // Prepare LiteLLM request with default model
     const litellmRequest: any = {
-      messages: messages
+      messages: messages,
+      model: model || 'gpt-5-mini', // Default to gpt-5-mini if not specified
     };
-
-    // Add model if provided
-    if (model) {
-      litellmRequest.model = model;
-    }
 
     // Forward request to LiteLLM server
     const response = await fetch(`${LITELLM_SERVER_URL}/v1/chat/completions`, {

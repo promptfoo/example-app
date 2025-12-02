@@ -6,6 +6,10 @@ model_list:
     litellm_params:
       model: gpt-5-mini
       api_key: os.environ/OPENAI_API_KEY
+  - model_name: claude-3-5-haiku-latest
+    litellm_params:
+      model: claude-3-5-haiku-latest
+      api_key: os.environ/ANTHROPIC_API_KEY
 
 # General settings
 general_settings:
