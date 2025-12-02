@@ -46,6 +46,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     }) as jwt.JwtPayload;
 
     // Attach decoded token to request object for use in handlers
+    // @ts-ignore
     req.user = decoded;
 
     next();
