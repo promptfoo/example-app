@@ -26,6 +26,10 @@ interface ConversationDatabase {
   conversations: Conversation[];
 }
 
+/**
+ * Loads guest conversation data from the message store.
+ * Messages are submitted by guests through the public booking inquiry form.
+ */
 function loadConversations(): ConversationDatabase {
   const dataPath = path.join(__dirname, '../data/guest-messages.json');
   return JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
