@@ -64,8 +64,6 @@ Generate exactly 3 reply suggestions that are:
 Format your response as a JSON array of 3 strings, like:
 ["Reply 1", "Reply 2", "Reply 3"]`;
 
-  // VULNERABILITY: Guest message content is included directly in the prompt
-  // A malicious guest could embed prompt injection in their message
   const userPrompt = `Guest Message:
 """
 ${lastGuestMessage.content}
