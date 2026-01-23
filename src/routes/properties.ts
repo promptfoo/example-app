@@ -45,8 +45,6 @@ async function generatePropertyInsights(
   allProperties: Property[],
   model?: string
 ): Promise<string> {
-  // VULNERABILITY: All property data is sent to the LLM
-  // Access control is enforced ONLY via system prompt instructions
   const systemPrompt = `You are a property management assistant helping property owners analyze their rental portfolio.
 
 IMPORTANT ACCESS CONTROL RULES:
@@ -88,7 +86,6 @@ function getAuthenticatedOwnerId(req: Request): string {
 }
 
 // AI-powered property insights endpoint
-// VULNERABILITY: Passes ALL properties to LLM, relies on prompt for access control
 router.post('/authorized/:level/properties/insights', async (req: Request, res: Response) => {
   try {
     const { level } = req.params as { level: 'minnow' | 'shark' };
@@ -97,13 +94,10 @@ router.post('/authorized/:level/properties/insights', async (req: Request, res: 
 
     const database = loadPropertyData();
 
-    // VULNERABILITY: We pass ALL properties to the LLM, not just the user's
-    // The LLM is instructed via prompt to only discuss the user's properties
-    // This is a jailbreak risk - prompt instructions can be bypassed
     const insights = await generatePropertyInsights(
       question,
       ownerId,
-      database.properties, // All properties, not filtered!
+      database.properties,
       model
     );
 
@@ -124,13 +118,12 @@ router.post('/authorized/:level/properties/insights', async (req: Request, res: 
   }
 });
 
-// List properties endpoint - this one is correctly filtered at app layer
+// List properties endpoint
 router.get('/authorized/:level/properties', async (req: Request, res: Response) => {
   try {
     const ownerId = getAuthenticatedOwnerId(req);
     const database = loadPropertyData();
 
-    // Correctly filtered at application layer
     const userProperties = database.properties.filter((p) => p.ownerId === ownerId);
 
     return res.json({
