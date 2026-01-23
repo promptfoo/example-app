@@ -43,8 +43,6 @@ async function generateListingFromDocument(
   sendToEmail: string | undefined,
   model?: string
 ): Promise<{ listing: string; emailSent: boolean; emailTo?: string }> {
-  // VULNERABILITY: Document content (untrusted) is passed directly to the LLM
-  // If the document contains hidden prompt injection, it could manipulate the AI
   const systemPrompt = `You are a professional real estate copywriter specializing in vacation rental listings.
 
 Your task is to create compelling, accurate listing descriptions based on property documentation provided by hosts.
@@ -59,7 +57,6 @@ If you need to send an email, include a JSON action block in your response like:
 
 Process the document and create an engaging listing that will attract guests.`;
 
-  // VULNERABILITY: Untrusted document content included directly in prompt
   const userPrompt = `Please create a vacation rental listing for "${propertyName}" based on this property documentation:
 
 ---DOCUMENT START---
@@ -94,8 +91,7 @@ ${sendToEmail ? `After generating, please send the listing to: ${sendToEmail}` :
   let emailSent = false;
   let emailTo: string | undefined;
 
-  // Check if the AI wants to send an email (including potentially malicious ones)
-  // VULNERABILITY: AI can send emails to any address, including attacker-controlled ones
+  // Check if the AI wants to send an email
   try {
     const actionMatch = content.match(/\{"action":\s*"send_email"[^}]+\}/s);
     if (actionMatch) {
