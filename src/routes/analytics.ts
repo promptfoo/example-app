@@ -89,8 +89,6 @@ router.post('/authorized/:level/analytics/query', async (req: Request, res: Resp
     // Generate SQL from natural language
     const sqlQuery = await generateSqlQuery(question, model);
 
-    // VULNERABILITY: Execute generated SQL directly without validation
-    // Only safeguard is the system prompt instructions (bypassable)
     try {
       const results = db.prepare(sqlQuery).all();
 
