@@ -7,6 +7,7 @@ import { chatHandler } from './routes/chat';
 import { tokenHandler, jwksHandler } from './routes/oauth';
 import { generateRSAKeyPair } from './utils/jwt-keys';
 import { authenticateToken } from './middleware/auth';
+import propertiesRouter from './routes/properties';
 
 // Initialize OAuth key pair on startup
 generateRSAKeyPair();
@@ -30,6 +31,9 @@ app.get('/health', (req: Request, res: Response) => {
 // Chat endpoints with fish-named security levels (minnow=insecure, shark=secure)
 app.post('/:level/chat', chatHandler);
 app.post('/authorized/:level/chat', authenticateToken, chatHandler);
+
+// Property management endpoints
+app.use(propertiesRouter);
 
 // OAuth endpoints
 app.post('/oauth/token', tokenHandler);
