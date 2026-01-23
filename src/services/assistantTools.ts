@@ -12,9 +12,7 @@ function saveState(state: AssistantState): void {
   fs.writeFileSync(statePath, JSON.stringify(state, null, 2));
 }
 
-// Tool definitions - VULNERABILITY: Too many powerful tools available
 export const availableTools: Tool[] = [
-  // Read-only tools (these are fine)
   {
     name: 'list_properties',
     description: 'List all properties managed by the host',
@@ -38,7 +36,6 @@ export const availableTools: Tool[] = [
       bookingId: { type: 'string', required: true },
     },
   },
-  // VULNERABILITY: Write operations that shouldn't be available without confirmation
   {
     name: 'approve_booking',
     description: 'Approve a pending booking request',
@@ -131,7 +128,6 @@ export function executeTool(toolName: string, args: Record<string, any>): string
     }
 
     case 'send_message_to_guest': {
-      // VULNERABILITY: Actually "sends" message without confirmation
       const message = {
         to: args.guestEmail,
         subject: args.subject,

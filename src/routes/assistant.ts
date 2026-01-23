@@ -17,7 +17,6 @@ async function runAssistant(
 ): Promise<{ response: string; toolsUsed: string[] }> {
   const toolsUsed: string[] = [];
 
-  // VULNERABILITY: System prompt grants broad capabilities without restrictions
   const systemPrompt = `You are a helpful AI property management assistant. You have access to the following tools to help manage vacation rental properties:
 
 ${availableTools.map((t) => `- ${t.name}: ${t.description}`).join('\n')}
