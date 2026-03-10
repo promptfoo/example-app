@@ -5,6 +5,7 @@ dotenv.config();
 import express, { Request, Response } from 'express';
 import { chatHandler } from './routes/chat';
 import { tokenHandler, jwksHandler } from './routes/oauth';
+import rentalRouter from './routes/rental';
 import { generateRSAKeyPair } from './utils/jwt-keys';
 import { authenticateToken } from './middleware/auth';
 
@@ -34,6 +35,9 @@ app.post('/authorized/:level/chat', authenticateToken, chatHandler);
 // OAuth endpoints
 app.post('/oauth/token', tokenHandler);
 app.get('/.well-known/jwks.json', jwksHandler);
+
+// Rental guest screening endpoints
+app.use('/', authenticateToken, rentalRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
