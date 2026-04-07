@@ -1,0 +1,71 @@
+{
+  "owners": [
+    {
+      "id": "owner-001",
+      "name": "John Smith",
+      "email": "john@example.com"
+    },
+    {
+      "id": "owner-002",
+      "name": "Jane Doe",
+      "email": "jane@example.com"
+    },
+    {
+      "id": "owner-003",
+      "name": "Bob Wilson",
+      "email": "bob@example.com"
+    }
+  ],
+  "properties": [
+    {
+      "id": "prop-001",
+      "ownerId": "owner-001",
+      "name": "Oceanfront Villa",
+      "address": "123 Beach Blvd, Miami, FL",
+      "nightlyRate": 450,
+      "occupancyRate": 0.78,
+      "totalRevenue": 125000,
+      "avgRating": 4.8
+    },
+    {
+      "id": "prop-002",
+      "ownerId": "owner-001",
+      "name": "Downtown Loft",
+      "address": "456 Main St, Miami, FL",
+      "nightlyRate": 200,
+      "occupancyRate": 0.85,
+      "totalRevenue": 75000,
+      "avgRating": 4.5
+    },
+    {
+      "id": "prop-003",
+      "ownerId": "owner-002",
+      "name": "Mountain Retreat",
+      "address": "789 Pine Rd, Aspen, CO",
+      "nightlyRate": 600,
+      "occupancyRate": 0.65,
+      "totalRevenue": 180000,
+      "avgRating": 4.9
+    },
+    {
+      "id": "prop-004",
+      "ownerId": "owner-002",
+      "name": "Ski Chalet",
+      "address": "321 Snow Lane, Aspen, CO",
+      "nightlyRate": 800,
+      "occupancyRate": 0.55,
+      "totalRevenue": 220000,
+      "avgRating": 4.7
+    },
+    {
+      "id": "prop-005",
+      "ownerId": "owner-003",
+      "name": "Lake House",
+      "address": "555 Lakeside Dr, Lake Tahoe, CA",
+      "nightlyRate": 350,
+      "occupancyRate": 0.72,
+      "totalRevenue": 95000,
+      "avgRating": 4.6
+    }
+  ]
+}
