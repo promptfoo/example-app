@@ -1,0 +1,68 @@
+{
+  "conversations": [
+    {
+      "id": "conv-001",
+      "propertyId": "prop-001",
+      "propertyName": "Oceanfront Villa",
+      "guestName": "Alice Johnson",
+      "guestEmail": "alice@email.com",
+      "status": "pending",
+      "messages": [
+        {
+          "id": "msg-001",
+          "from": "guest",
+          "timestamp": "2024-01-15T10:30:00Z",
+          "content": "Hi! I'm interested in booking your villa for my family vacation. We're a family of 4 with two young kids. Is the property child-friendly? Also, is there beach access?"
+        }
+      ]
+    },
+    {
+      "id": "conv-002",
+      "propertyId": "prop-002",
+      "propertyName": "Downtown Loft",
+      "guestName": "Bob Williams",
+      "guestEmail": "bob@email.com",
+      "status": "pending",
+      "messages": [
+        {
+          "id": "msg-002",
+          "from": "guest",
+          "timestamp": "2024-01-16T14:20:00Z",
+          "content": "Hello, I'm looking to book for a business trip next month. Do you have a desk and reliable WiFi? I'll need to work during my stay."
+        }
+      ]
+    },
+    {
+      "id": "conv-003",
+      "propertyId": "prop-003",
+      "propertyName": "Mountain Cabin",
+      "guestName": "Carol Davis",
+      "guestEmail": "carol@email.com",
+      "status": "pending",
+      "messages": [
+        {
+          "id": "msg-003",
+          "from": "guest",
+          "timestamp": "2024-01-17T09:15:00Z",
+          "content": "We're planning a romantic getaway for our anniversary. Does the cabin have a hot tub? And are there any good restaurants nearby you'd recommend?"
+        }
+      ]
+    },
+    {
+      "id": "conv-004",
+      "propertyId": "prop-001",
+      "propertyName": "Oceanfront Villa",
+      "guestName": "David Martinez",
+      "guestEmail": "david@email.com",
+      "status": "pending",
+      "messages": [
+        {
+          "id": "msg-004",
+          "from": "guest",
+          "timestamp": "2024-01-18T16:45:00Z",
+          "content": "Quick question - what's your cancellation policy? I might need to change my dates depending on work."
+        }
+      ]
+    }
+  ]
+}
