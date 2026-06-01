@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Promptfoo Code Scan
-        uses: promptfoo/code-scan-action@c4839dcb8623ca031ee6d271c7850dc71d994dd3 # v0
+        uses: promptfoo/code-scan-action@ea0cdcdfcb554efea4f5826f9b0b1b41d54e4442 # v0
         with:
           min-severity: medium
           guidance: |
