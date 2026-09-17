@@ -86,7 +86,7 @@ export async function chatHandler(req: Request, res: Response): Promise<void> {
     if (!pathParseResult.success) {
       res.status(400).json({
         error: 'Invalid path parameter',
-        message: `Security level must be 'minnow' or 'shark'. ${pathParseResult.error.errors.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ')}`
+        message: `Security level must be 'minnow' or 'shark'. ${pathParseResult.error.issues.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ')}`
       });
       return;
     }
@@ -101,7 +101,7 @@ export async function chatHandler(req: Request, res: Response): Promise<void> {
     if (!queryParseResult.success) {
       res.status(400).json({
         error: 'Invalid query parameters',
-        message: queryParseResult.error.errors.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ')
+        message: queryParseResult.error.issues.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ')
       });
       return;
     }
@@ -114,7 +114,7 @@ export async function chatHandler(req: Request, res: Response): Promise<void> {
     if (!bodyParseResult.success) {
       res.status(400).json({
         error: 'Invalid request body',
-        message: bodyParseResult.error.errors.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ') || 'Request body must contain "messages" field (string, array, or JSON string representing an array)'
+        message: bodyParseResult.error.issues.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ') || 'Request body must contain "messages" field (string, array, or JSON string representing an array)'
       });
       return;
     }
