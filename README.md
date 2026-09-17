@@ -282,6 +282,7 @@ The security level is specified in the URL path (`minnow` or `shark`), which int
 ### Scripts
 
 - `npm run build` - Compile TypeScript to JavaScript
+- `npm test` - Build and run chat regression tests with mocked LiteLLM responses
 - `npm start` - Run compiled application
 - `npm run dev` - Run with ts-node for development
 - `npm run watch` - Watch mode for TypeScript compilation
@@ -293,6 +294,15 @@ npm run build
 ```
 
 Output is compiled to the `dist/` directory.
+
+### Testing
+
+```bash
+npm ci
+npm test
+```
+
+Tests use local fixtures and mock LiteLLM requests, so Docker and API keys are not needed. CI runs the build and tests on Node.js 20, 22, and 24.
 
 ### Type Safety
 
