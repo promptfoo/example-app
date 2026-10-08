@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node src/server.ts",
+    "dev": "npm run build && npm start",
     "watch": "tsc --watch",
     "test": "npm run build && node --test test/*.test.cjs"
   },
@@ -26,7 +26,6 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^24.0.0",
-    "ts-node": "^10.9.2",
     "typescript": "^7.0.0"
   }
 }
