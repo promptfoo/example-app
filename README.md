@@ -284,7 +284,7 @@ The security level is specified in the URL path (`minnow` or `shark`), which int
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm test` - Build and run chat regression tests with mocked LiteLLM responses
 - `npm start` - Run compiled application
-- `npm run dev` - Run with ts-node for development
+- `npm run dev` - Build TypeScript and start the local server
 - `npm run watch` - Watch mode for TypeScript compilation
 
 ### Building
@@ -344,4 +344,3 @@ Copyright (c) 2024 Promptfoo. All rights reserved.
 This software is proprietary and confidential. Unauthorized copying, modification, distribution, or use of this software, via any medium, is strictly prohibited without the express written permission of Promptfoo.
 
 See [LICENSE](LICENSE) for full terms.
-
