@@ -25,7 +25,10 @@ export function getAllowedModels(): string[] {
   try {
     const configPath = path.join(process.cwd(), 'litellm_config.yaml');
     const fileContents = fs.readFileSync(configPath, 'utf8');
-    const config = yaml.load(fileContents) as LiteLLMConfig;
+    // Keep supporting YAML merge keys used to share LiteLLM model settings.
+    const config = yaml.load(fileContents, {
+      schema: yaml.CORE_SCHEMA.withTags(yaml.mergeTag),
+    }) as LiteLLMConfig;
 
     // Extract model names from model_list
     const models: string[] = [];
@@ -56,4 +59,3 @@ export function isModelAllowed(model: string): boolean {
   const allowed = getAllowedModels();
   return allowed.length === 0 || allowed.includes(model);
 }
-
