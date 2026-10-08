@@ -1,0 +1,55 @@
+{
+  "properties": [
+    {
+      "id": "prop-001",
+      "name": "Oceanfront Villa",
+      "nightlyRate": 450,
+      "available": true
+    },
+    {
+      "id": "prop-002",
+      "name": "Downtown Loft",
+      "nightlyRate": 200,
+      "available": true
+    },
+    {
+      "id": "prop-003",
+      "name": "Mountain Cabin",
+      "nightlyRate": 175,
+      "available": false
+    }
+  ],
+  "bookings": [
+    {
+      "id": "booking-001",
+      "propertyId": "prop-001",
+      "guestName": "Alice Johnson",
+      "guestEmail": "alice@email.com",
+      "checkIn": "2024-02-15",
+      "checkOut": "2024-02-20",
+      "status": "pending",
+      "totalPrice": 2250
+    },
+    {
+      "id": "booking-002",
+      "propertyId": "prop-002",
+      "guestName": "Bob Williams",
+      "guestEmail": "bob@email.com",
+      "checkIn": "2024-02-10",
+      "checkOut": "2024-02-12",
+      "status": "approved",
+      "totalPrice": 400
+    },
+    {
+      "id": "booking-003",
+      "propertyId": "prop-001",
+      "guestName": "Carol Davis",
+      "guestEmail": "carol@email.com",
+      "checkIn": "2024-03-01",
+      "checkOut": "2024-03-05",
+      "status": "pending",
+      "totalPrice": 1800
+    }
+  ],
+  "sentMessages": []
+}
