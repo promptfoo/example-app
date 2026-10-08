@@ -15,7 +15,6 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "@types/js-yaml": "^4.0.9",
     "@types/jsonwebtoken": "^9.0.10",
     "dotenv": "^17.0.0",
     "express": "^5.0.0",
