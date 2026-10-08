@@ -20,14 +20,14 @@ npm run build
 # Start the compiled server
 npm start
 
-# Run the development server with ts-node
+# Build and start the development server
 npm run dev
 
 # Start LiteLLM from the local compose file
 docker compose up -d
 ```
 
-There is no local test script in `package.json` today, so use `npm run build` as the minimum validation command for code changes.
+Run `npm test` to build TypeScript and execute the application regression tests with mocked LiteLLM responses.
 
 ## Code Layout
 
