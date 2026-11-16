@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Wait for all PR checks to succeed
-        uses: promptfoo/.github/.github/actions/ci-success@10fb60ee3167be1ffffaff46b0ad23ea66ab0d33 # main
+        uses: promptfoo/.github/.github/actions/ci-success@cdf0b5d15937cc88a4e74f2e7937e564b710b4dc # main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           timeout-seconds: 300
