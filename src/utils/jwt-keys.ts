@@ -74,7 +74,7 @@ export function getPublicKeyJWK(): {
   }
 
   // Export public key as JWK
-  const jwk = keyPair.publicKey.export({ format: 'jwk' }) as crypto.JsonWebKey;
+  const jwk = keyPair.publicKey.export({ format: 'jwk' });
 
   // Convert base64url to base64url (already in correct format)
   // Ensure n and e are base64url encoded strings
